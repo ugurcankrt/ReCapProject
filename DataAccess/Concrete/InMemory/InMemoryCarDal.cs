@@ -3,6 +3,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.InMemory
@@ -33,16 +34,25 @@ namespace DataAccess.Concrete.InMemory
             _cars.Remove(carToDelete);
         }
 
+        public Car Get(Expression<Func<Car, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Car> GetAll()
         {
             return _cars;
         }
 
-        public List<Car> GetById(int ıd, int brandId, int colorId)
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        {
+            return _cars;
+        }
+
+        public List<Car> GetById(int ıd)
         {
             return _cars.Where(c => c.Id == ıd).ToList();
-            return _cars.Where(c => c.BrandId == ıd).ToList();
-            return _cars.Where(c => c.ColorId == ıd).ToList();
+           
 
         }
             

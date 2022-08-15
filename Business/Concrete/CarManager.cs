@@ -11,17 +11,17 @@ namespace Business.Concrete
     public class CarManager : ICarService
     {
         ICarDal _carDal;
-        IBrandDal _brandDal;
+        IBrandService _brandService;
 
-        public CarManager(ICarDal carDal, IBrandDal brandDal)
+        public CarManager(ICarDal carDal, IBrandService brandService)
         {
             _carDal = carDal;
-            _brandDal = brandDal;
+            _brandService = brandService;
         }
 
         public void Add(Car car)
         {
-            Brand brand = _brandDal.Get(b => b.BrandId == car.Id);
+            Brand brand = _brandService.GetById(car.BrandId);
             if (brand.BrandName.Length < 2)
             {
                 Console.WriteLine("minimum 2 karajker");
@@ -41,6 +41,7 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
+        
         public List<CarDetailDto> GetCarDetails()
         {
             return _carDal.GetCarDetails();

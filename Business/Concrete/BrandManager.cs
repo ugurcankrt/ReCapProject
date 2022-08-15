@@ -27,7 +27,14 @@ namespace Business.Concrete
         public Brand GetById(int brandId)
         {
             return _brandDal.Get(b => b.BrandId == brandId);
+        }
 
+
+        public void Delete(int brandId)
+        {
+            var brand = _brandDal.Get(b => b.BrandId == brandId);
+            _brandDal.Delete(brand);
+            Console.WriteLine("silindi");
         }
     }
 }

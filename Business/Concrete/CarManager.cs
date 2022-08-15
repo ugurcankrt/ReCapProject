@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,7 +21,7 @@ namespace Business.Concrete
 
         public void Add(Car car)
         {
-            Brand brand = _brandDal.Get(x => x.Id == car.Id);
+            Brand brand = _brandDal.Get(b => b.BrandId == car.Id);
             if (brand.BrandName.Length < 2)
             {
                 Console.WriteLine("minimum 2 karajker");
@@ -38,6 +39,11 @@ namespace Business.Concrete
         {
             //iş kodları
             return _carDal.GetAll();
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
         }
 
         public List<Car> GetCarsByBrandId(int brandId)

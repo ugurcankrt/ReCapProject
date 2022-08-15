@@ -9,6 +9,10 @@ namespace Entities.DTos
     {
         public int Id { get; set; }
 
+        public string CarName { get; set; }
+
+        public string ColorName { get; set; }
+
         public string BrandName { get; set; }
 
         public int ModelYear { get; set; }

@@ -36,5 +36,7 @@ namespace Business.Concrete
             _brandDal.Delete(brand);
             Console.WriteLine("silindi");
         }
+
+       
     }
 }
